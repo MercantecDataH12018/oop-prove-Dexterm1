@@ -12,10 +12,20 @@ namespace OOPH1Eksamen
     */
 
 
-    class Program {
-        public static void Main() {
+    class Program
+    {
+        public static void Main()
+        {
             //Denne funktion kan du bruge til at teste din kode
-            Console.WriteLine("Hello World!");
+            C c = new C();
+            G g = new G();
+            F f = new F();
+            I ii = new I();
+
+            Console.WriteLine(c.Increase());
+            Console.WriteLine(g.getA());
+            Console.WriteLine(f.moreNumbers);
+            Console.WriteLine(ii.PrintM("Text"));
         }
     }
 
@@ -24,24 +34,33 @@ namespace OOPH1Eksamen
     {
         public string name = "";
         public int legs = 2;
+        public int age;
     }
 
     //OPG Tilføj en string property kaldet 'brand' til følgende class
     class E
     {
-
+        public string brand;
     }
 
     //OPG Tilføj en metode der kan forstørre 'a' med 1 hver gang den kaldes
     class C
     {
         public int a;
+        public int Increase()
+        {
+            return a + 1;
+        }
     }
 
     //OPG Tilføj en metode kaldet "getA" der kan returnere værdien i a
     class G
     {
         string a = "Hello!";
+        public string getA()
+        {
+            return a;
+        }
     }
 
     //OPG Tilføj en metode der kan tilføje et tal til numbers. Numbers skal
@@ -49,14 +68,25 @@ namespace OOPH1Eksamen
     class F
     {
         List<int> numbers = new List<int>();
+
+        public void moreNumbers(List<int> numbers)
+        {
+            numbers.Add(1);
+        }
     }
 
     //OPG Implementer encapsulation i denne klasse, men gør således det stadig 
     //er muligt at læse værdierne 'a' og 'b'
     class D
     {
-        public int a;
-        public string b;
+        private int a;
+        private string b;
+
+        public D(int a, string b)
+        {
+            this.a = a;
+            this.b = b;
+        }
     }
 
     //OPG Lav en constructor der sætter alle properties af følgende klasse
@@ -65,22 +95,35 @@ namespace OOPH1Eksamen
         public int a;
         public string b;
         public double c;
+
+        public A(int a, string b, double c)
+        {
+            this.a = a;
+            this.b = b;
+            this.c = c;
+        }
     }
 
     //OPG klassen H skal have en reference til klasse A, kaldet 'a'. Lav en constructor der
     //sætter denne til reference til et objekt af A
     class H
     {
-        
+        public A a;
+
+        public H(A a)
+        {
+            this.a = a;
+        }
     }
 
     //OPG Ændre funktionen PrintM, således at den ikke crasher programmet hvis den køres.
-    class I 
+    class I
     {
         public string text;
 
-        public void PrintM(){
-            Console.WriteLine("Text is " + text.Length + "long");
+        public string PrintM(string text)
+        {
+            return "Text is " + text.Length + " long";
         }
     }
 
@@ -90,11 +133,13 @@ namespace OOPH1Eksamen
     {
         public I i;
 
-        public void Invoke() {
-            i.PrintM();
+        public void Invoke()
+        {
+            i.PrintM("text");
         }
 
-        public J(I i) {
+        public J(I i)
+        {
             this.i = i;
         }
     }
@@ -102,8 +147,9 @@ namespace OOPH1Eksamen
     //OPG Herunder skal du selv implementere en class kaldet MyClass der
     //er subclass til C. Tilføj et public string felt kaldet 'myString'.
 
-    class MyClass {
-        
+    class MyClass : C
+    {
+        public string myString;
     }
 
 
